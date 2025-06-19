@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "PhishyBiz - AI Phishing Detector & Email Scanner",
+  "version": "1.0",
+  "description": "PhishyBiz protects you from phishing scams with smart AI-powered URL and email scanning.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "https://mail.google.com/*",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["manual_legit_urls_content.js", "email_content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["manual_legit_urls_content.js", "manual_legit_urls_background.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
+}
