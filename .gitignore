@@ -4,3 +4,4 @@ __pycache__/
 *.env
 venv/
 node_modules/
+flask_api/datasets/verified_online.csv
