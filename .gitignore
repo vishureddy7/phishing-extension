@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 *.pkl
 *.env
+*.csv
 venv/
 node_modules/
-flask_api/datasets/verified_online.csv
+
